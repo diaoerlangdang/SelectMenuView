@@ -58,3 +58,10 @@ iOS下拉菜单
  */
 - (void)selectMenuView:(WWSelectMenuView *)selectMenuView finish:(NSArray<NSNumber *> *)selectIndexs;
 ```
+
+## 使用的第三方库
+
+<a href="https://github.com/SnapKit/Masonry">Masonry</a></p>
+
+## 备注
+未添加水平滑动，当菜单列多的时候，无法左右滑动
