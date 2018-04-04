@@ -91,6 +91,11 @@
 
 - (void)selectMenuView:(WWSelectMenuView *)selectMenuView section:(NSInteger)section didSelect:(NSInteger)row
 {
+    //不继续显示
+    if (section == 0 && row == 0) {
+        [_menuView hideMenu];
+    }
+    
 }
 
 - (void)selectMenuView:(WWSelectMenuView *)selectMenuView finish:(NSArray<NSNumber *> *)selectIndexs

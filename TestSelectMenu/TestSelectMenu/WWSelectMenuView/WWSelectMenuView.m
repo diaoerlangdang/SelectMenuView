@@ -59,6 +59,9 @@
 
 @property (nonatomic, strong)MASConstraint *heigthMas;
 
+//是否正在隐藏
+@property (nonatomic, assign) BOOL isHidding;
+
 
 @end
 
@@ -73,6 +76,7 @@
         _selectIndexArr = [NSMutableArray array];
         _sectionWidth = 100;
         _isShow = false;
+        _isHidding = false;
         
         _textColor = DEFAULT_NORMAL_TEXT_COLOR;
         _selectTextColor = DEFAULT_SELECT_TEXT_COLOR;
@@ -166,6 +170,11 @@
     //选择
     if (_delegate != nil && [_delegate respondsToSelector:@selector(selectMenuView:section:didSelect:)]) {
         [_delegate selectMenuView:self section:section didSelect:indexPath.row];
+    }
+    
+    //正在隐藏
+    if (_isHidding) {
+        return;
     }
     
     if (section+1 >= num) {
@@ -346,6 +355,8 @@
         }
     }
     
+    _isHidding = true;
+    
     [self layoutIfNeeded];
     
     if (_heigthMas != nil) {
@@ -364,6 +375,7 @@
         if (finished) {
             [self removeFromSuperview];
             _isShow = false;
+            _isHidding = false;
         }
         
     }];
