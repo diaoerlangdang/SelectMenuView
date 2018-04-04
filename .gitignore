@@ -61,3 +61,5 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+
+TestSelectMenu/Pods/Target Support Files/Pods-TestSelectMenu/Pods-TestSelectMenu-resources.sh
