@@ -169,10 +169,8 @@
     }
     
     if (section+1 >= num) {
-        if (_delegate != nil && [_delegate respondsToSelector:@selector(selectMenuView:finish:)]) {
-            [_delegate selectMenuView:self finish:_selectIndexArr];
-        }
-        [self hideMenu];
+        
+        [self hideMenu:true];
     }
     else {
         
@@ -264,6 +262,7 @@
     
     [_contentView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self);
+        make.left.equalTo(self);
         make.bottom.equalTo(tableView); 
         make.right.equalTo(tableView.mas_right).offset(-5);
         if (_isShow) {
@@ -326,6 +325,27 @@
  */
 - (void)hideMenu
 {
+    [self hideMenu:false];
+}
+
+/**
+ 隐藏menu
+ 
+ @param isFinish 是否完成
+ */
+- (void)hideMenu:(BOOL)isFinish
+{
+    if (isFinish) {
+        if (_delegate != nil && [_delegate respondsToSelector:@selector(selectMenuView:finish:)]) {
+            [_delegate selectMenuView:self finish:_selectIndexArr];
+        }
+    }
+    else {
+        if (_delegate != nil && [_delegate respondsToSelector:@selector(selectMenuViewWithCancel:)]) {
+            [_delegate selectMenuViewWithCancel:self];
+        }
+    }
+    
     [self layoutIfNeeded];
     
     if (_heigthMas != nil) {

@@ -57,8 +57,14 @@ iOS下拉菜单
  @param selectIndexs 选中的位置数组
  */
 - (void)selectMenuView:(WWSelectMenuView *)selectMenuView finish:(NSArray<NSNumber *> *)selectIndexs;
-```
 
+/**
+ 菜单取消
+ 
+ @param selectMenuView 菜单view
+ */
+- (void)selectMenuViewWithCancel:(WWSelectMenuView *)selectMenuView;
+```
 ## 使用的第三方库
 
 <a href="https://github.com/SnapKit/Masonry">Masonry</a></p>

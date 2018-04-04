@@ -65,6 +65,14 @@
  */
 - (void)selectMenuView:(WWSelectMenuView *)selectMenuView finish:(NSArray<NSNumber *> *)selectIndexs;
 
+
+/**
+ 菜单取消
+ 
+ @param selectMenuView 菜单view
+ */
+- (void)selectMenuViewWithCancel:(WWSelectMenuView *)selectMenuView;
+
 @end
 
 @interface WWSelectMenuView : UIView
@@ -116,8 +124,15 @@
 - (void)showMenuForSuperView:(UIView *)superView;
 
 /**
- 隐藏menu
+ 隐藏menu，取消选择
  */
 - (void)hideMenu;
+
+/**
+ 隐藏menu
+
+ @param isFinish 是否完成
+ */
+- (void)hideMenu:(BOOL)isFinish;
 
 @end

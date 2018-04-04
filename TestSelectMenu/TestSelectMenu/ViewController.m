@@ -98,4 +98,9 @@
     NSLog(@"%@",selectIndexs);
 }
 
+- (void)selectMenuViewWithCancel:(WWSelectMenuView *)selectMenuView
+{
+    NSLog(@"取消");
+}
+
 @end
