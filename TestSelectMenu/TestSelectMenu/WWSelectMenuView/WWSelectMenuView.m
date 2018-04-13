@@ -141,7 +141,7 @@
         cell.textLabel.text = [_delegate selectMenuView:self section:section row:indexPath.row];
     }
     
-    if (indexPath.row == [_selectIndexArr[section] integerValue]) {
+    if (_selectIndexArr.count > section && indexPath.row == [_selectIndexArr[section] integerValue]) {
         cell.backgroundColor = _selectBgColor;
         cell.textLabel.textColor = _selectTextColor;
         cell.textLabel.font = _selectTextFont;
@@ -165,7 +165,13 @@
     }
     
     //修改选中列表
-    _selectIndexArr[section] = @(indexPath.row);
+    if (_selectIndexArr.count < section) {
+        [_selectIndexArr addObject:@(indexPath.row)];
+    }
+    else {
+        _selectIndexArr[section] = @(indexPath.row);
+    }
+    
     
     //选择
     if (_delegate != nil && [_delegate respondsToSelector:@selector(selectMenuView:section:didSelect:)]) {
@@ -199,7 +205,11 @@
                 [_tableViews removeObject:view];
             }
             
-            _selectIndexArr[section+1] = @(-1);
+            if (_selectIndexArr.count > section+1) {
+                [_selectIndexArr removeObjectAtIndex:section+1];
+            }
+            
+//            _selectIndexArr[section+1] = @(-1);
         }
     }
 }
@@ -244,7 +254,7 @@
     tableView.showsVerticalScrollIndicator = false;
     [_contentView addSubview:tableView];
     [_tableViews addObject:tableView];
-    [_selectIndexArr addObject:@(-1)];
+//    [_selectIndexArr addObject:@(-1)];
     
     
     __block MASConstraint *leftMas = nil;
