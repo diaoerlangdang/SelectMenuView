@@ -165,7 +165,7 @@
     }
     
     //修改选中列表
-    if (_selectIndexArr.count < section) {
+    if (_selectIndexArr.count <= section) {
         [_selectIndexArr addObject:@(indexPath.row)];
     }
     else {
